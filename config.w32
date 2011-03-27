@@ -1,0 +1,9 @@
+// $Id$
+// vim:ft=javascript
+
+ARG_ENABLE("str", "enable str support", "no");
+
+if (PHP_STR != "no") {
+	EXTENSION("str", "str.c");
+}
+

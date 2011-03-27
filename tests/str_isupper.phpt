@@ -1,0 +1,29 @@
+--TEST--
+str_isupper() function
+--FILE--
+<?php
+var_dump(str_isupper(""));
+var_dump(str_isupper(" "));
+var_dump(str_isupper(null));
+var_dump(str_isupper("A"));
+var_dump(str_isupper("Ä"));
+var_dump(str_isupper("a"));
+var_dump(str_isupper("ab"));
+var_dump(str_isupper("aB"));
+var_dump(str_isupper("AB"));
+var_dump(str_isupper("ABc"));
+var_dump(str_isupper("ABC"));
+var_dump(str_isupper(1));
+--EXPECT--
+bool(false)
+bool(false)
+bool(false)
+bool(true)
+bool(true)
+bool(false)
+bool(false)
+bool(false)
+bool(true)
+bool(false)
+bool(true)
+bool(false)

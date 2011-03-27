@@ -1,0 +1,80 @@
+= ext/str
+
+Set of utility functions for strings in PHP.  I made those primarily
+for personal entertainment.  Most of that stuff isn't tested that well
+(though there are unit tests available) and the API and the behaviour
+of the functions is likely to change.  You have been warned.
+
+=== str_startswith(haystsack, needle, [case_insensitive]) : bool
+
+Returns true if the string needle starts with the substring
+haystack.  Returns false otherwise.
+
+If the optional third parameter is set to true, the test is
+performed in a case-insensitive manner.
+
+
+=== str_endswith(haystack, needle, [case_insensitive]) : bool
+
+Returns true if the string needle ends with the substring
+haystack.  Returns false otherwise.
+	
+If the optional third parameter is set to true, the test is
+performed in a case-insensitive manner.
+
+
+=== str_isupper(input) : bool
+
+Returns true if all cased characters in the given input string are
+uppercase and if the string contains at least one cased character.
+Returns false otherwise.
+
+
+=== str_islower(input) : bool
+
+Returns true if all cased characters in the given input string are
+lowercase and if the string contains at least one cased character.
+Returns false otherwise.
+
+
+=== str_iswhitespace(input) : bool
+
+Returns true if the given string is empty or contains whitespace
+characters only.  Returns false otherwise.
+
+
+=== str_swapcase(input) : string
+
+Return the given string with uppercase characters converted to
+their lowercase representations and vice versa. 
+
+
+== License
+
+All the stuff in here is licensed under the New BSD License. See the
+included LICENSE file for more info.  Have fun!
+
+
+== Development notes
+
+=== Building
+
+Should you run into issues regarding PHP's buildconf script at some point,
+try forcing autoconf and autoheader to version 2.13.  (Make sure those are
+installed, of course.)
+
+$ PHP_AUTOHEADER=autoheader213 PHP_AUTOCONF=autoconf213 ./buildconf
+
+Not sure why those things still have to be so complicated in the 21st
+century.
+
+=== Running the tests
+
+$ export TEST_PHP_EXECUTABLE=./sapi/cli/php
+$ php run-tests.php ./ext/str/tests/
+
+
+== TODO / ideas
+
+* str_contains(haystack, needle [, case_insensitive]) : bool
+* str_expandtabs(string) : string
