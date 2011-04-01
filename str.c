@@ -203,6 +203,9 @@ PHP_FUNCTION(str_contains)
 }
 /* }}} */
 
+/* {{{ proto bool str_isupper(string input)
+   Checks if all cased characters in the given input string are uppercase and if the 
+   string contains at least one cased character. */
 PHP_FUNCTION(str_isupper)
 {
     unsigned char *input, *end;
@@ -240,7 +243,11 @@ PHP_FUNCTION(str_isupper)
     
     RETURN_BOOL(has_cased_char == 1);
 }
+/* }}} */
 
+/* {{{ proto bool str_islower(string input)
+   Checks if all cased characters in the given input string are lowercase and if the 
+   string contains at least one cased character. */
 PHP_FUNCTION(str_islower)
 {
     unsigned char *input, *end;
@@ -278,7 +285,11 @@ PHP_FUNCTION(str_islower)
     
     RETURN_BOOL(has_cased_char == 1);
 }
+/* }}} */
 
+/* {{{ proto bool str_iswhitespace(string input)
+   Checks if the given string is empty or contains whitespace characters
+   only. */
 PHP_FUNCTION(str_iswhitespace)
 {
     unsigned char *input, *end;
@@ -308,7 +319,11 @@ PHP_FUNCTION(str_iswhitespace)
 
     RETURN_TRUE;
 }
+/* }}} */
 
+/* {{{ proto bool str_swapcase(string input)
+   Converts uppercase characters in the given string to their
+   lowercase representations and vice versa. */
 PHP_FUNCTION(str_swapcase)
 {
     char *input;
@@ -336,6 +351,7 @@ PHP_FUNCTION(str_swapcase)
 
     RETURN_STRINGL(input, input_len, 0)
 }
+/* }}} */
 
 /*
  * Local variables:
