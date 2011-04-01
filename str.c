@@ -6,6 +6,7 @@
 #include "php_ini.h"
 #include "ext/standard/info.h"
 #include "php_str.h"
+#include "ext/standard/php_string.h"
 
 /* True global resources - no need for thread safety here */
 static int le_str;
@@ -21,6 +22,7 @@ const zend_function_entry str_functions[] = {
     PHP_FE(str_islower,         NULL)
     PHP_FE(str_iswhitespace,    NULL)
     PHP_FE(str_swapcase,        NULL)
+    PHP_FE(str_contains,        NULL)
     {NULL, NULL, NULL}
 };
 /* }}} */
@@ -155,6 +157,49 @@ PHP_FUNCTION(str_endswith)
     }
 
     RETURN_BOOL(retval == 0);
+}
+/* }}} */
+
+/* {{{ proto bool str_contains(string haystack, string needle [, bool case_sensitivity])
+   Binary safe optionally case sensitive check if haystack contains needle */
+PHP_FUNCTION(str_contains)
+{
+    char *needle, *haystack, *haystack_dup, *needle_dup;
+    char *found = NULL;
+    int needle_len, haystack_len;
+    zend_bool cs = 0;
+
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "ss|b", &haystack, &haystack_len, &needle, &needle_len, &cs) == FAILURE) {
+        RETURN_FALSE;
+    }
+
+    if (needle_len > haystack_len || !haystack_len) {
+        RETURN_FALSE;
+    }
+
+    if (!needle_len) {
+        php_error_docref(NULL TSRMLS_CC, E_WARNING, "Empty delimiter");
+        RETURN_FALSE;
+    }
+
+    /* TODO: mimick more of the logic from strpos, i.e. make needle
+     * a zval.
+     */
+    if (cs) {
+        found = php_memnstr(haystack, needle, needle_len, haystack + haystack_len);
+    } else {
+        haystack_dup = estrndup(haystack, haystack_len);
+        php_strtolower(haystack_dup, haystack_len);
+
+        needle_dup = estrndup(needle, needle_len);
+        php_strtolower(needle_dup, needle_len);
+        found = php_memnstr(haystack_dup, needle_dup, needle_len, haystack_dup + haystack_len);
+        
+        efree(haystack_dup);
+        efree(needle_dup);
+    }
+
+    RETURN_BOOL(found);
 }
 /* }}} */
 

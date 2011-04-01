@@ -28,6 +28,7 @@ PHP_FUNCTION(str_isupper);
 PHP_FUNCTION(str_islower);
 PHP_FUNCTION(str_iswhitespace);
 PHP_FUNCTION(str_swapcase);
+PHP_FUNCTION(str_contains);
 
 /* 
     Declare any global variables you may need between the BEGIN

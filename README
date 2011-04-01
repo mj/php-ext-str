@@ -23,6 +23,15 @@ If the optional third parameter is set to true, the test is
 performed in a case-insensitive manner.
 
 
+str_contains(haystack, needle, [case_insensitive]) : bool
+
+Returns true if the string haystack contains the substring
+needle.  Returns false otherwise.
+	
+If the optional third parameter is set to true, the test is
+performed in a case-insensitive manner.
+
+
 str_isupper(input) : bool
 
 Returns true if all cased characters in the given input string are
@@ -80,5 +89,4 @@ $ php run-tests.php ./ext/str/tests/
 TODO / ideas
 ------------
 
-* str_contains(haystack, needle [, case_insensitive]) : bool
 * str_expandtabs(string) : string
