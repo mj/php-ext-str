@@ -5,10 +5,10 @@ for personal entertainment.  Most of that stuff isn't tested that well
 (though there are unit tests available) and the API and the behaviour
 of the functions is likely to change.  You have been warned.
 
-str_startswith(haystsack, needle, [case_insensitive]) : bool
+str_startswith(haystack, needle, [case_insensitive]) : bool
 
-Returns true if the string needle starts with the substring
-haystack.  Returns false otherwise.
+Returns true if the string haystack starts with the substring
+needle.  Returns false otherwise.
 
 If the optional third parameter is set to true, the test is
 performed in a case-insensitive manner.
@@ -16,9 +16,9 @@ performed in a case-insensitive manner.
 
 str_endswith(haystack, needle, [case_insensitive]) : bool
 
-Returns true if the string needle ends with the substring
-haystack.  Returns false otherwise.
-	
+Returns true if the string haystack ends with the substring
+needle.  Returns false otherwise.
+
 If the optional third parameter is set to true, the test is
 performed in a case-insensitive manner.
 
@@ -27,7 +27,7 @@ str_contains(haystack, needle, [case_insensitive]) : bool
 
 Returns true if the string haystack contains the substring
 needle.  Returns false otherwise.
-	
+
 If the optional third parameter is set to true, the test is
 performed in a case-insensitive manner.
 
@@ -54,7 +54,7 @@ characters only.  Returns false otherwise.
 
 str_swapcase(input) : string
 
-Return the given string with uppercase characters converted to
+Returns the given string with uppercase characters converted to
 their lowercase representations and vice versa. 
 
 
