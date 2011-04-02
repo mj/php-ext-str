@@ -41,7 +41,7 @@ zend_module_entry str_module_entry = {
     NULL,
     PHP_MINFO(str),
 #if ZEND_MODULE_API_NO >= 20010901
-    "0.1", /* Replace with version number for your extension */
+    "0.1",
 #endif
     STANDARD_MODULE_PROPERTIES
 };
@@ -51,34 +51,10 @@ zend_module_entry str_module_entry = {
 ZEND_GET_MODULE(str)
 #endif
 
-/* {{{ PHP_INI
- */
-/* Remove comments and fill if you need to have entries in php.ini
-PHP_INI_BEGIN()
-    STD_PHP_INI_ENTRY("str.global_value",      "42", PHP_INI_ALL, OnUpdateLong, global_value, zend_str_globals, str_globals)
-    STD_PHP_INI_ENTRY("str.global_string", "foobar", PHP_INI_ALL, OnUpdateString, global_string, zend_str_globals, str_globals)
-PHP_INI_END()
-*/
-/* }}} */
-
-/* {{{ php_str_init_globals
- */
-/* Uncomment this function if you have INI entries
-static void php_str_init_globals(zend_str_globals *str_globals)
-{
-    str_globals->global_value = 0;
-    str_globals->global_string = NULL;
-}
-*/
-/* }}} */
-
 /* {{{ PHP_MINIT_FUNCTION
  */
 PHP_MINIT_FUNCTION(str)
 {
-    /* If you have INI entries, uncomment these lines 
-    REGISTER_INI_ENTRIES();
-    */
     return SUCCESS;
 }
 /* }}} */
@@ -87,9 +63,6 @@ PHP_MINIT_FUNCTION(str)
  */
 PHP_MSHUTDOWN_FUNCTION(str)
 {
-    /* uncomment this line if you have INI entries
-    UNREGISTER_INI_ENTRIES();
-    */
     return SUCCESS;
 }
 /* }}} */
@@ -101,10 +74,6 @@ PHP_MINFO_FUNCTION(str)
     php_info_print_table_start();
     php_info_print_table_header(2, "str support", "enabled");
     php_info_print_table_end();
-
-    /* Remove comments if you have entries in php.ini
-    DISPLAY_INI_ENTRIES();
-    */
 }
 /* }}} */
 
